@@ -7,7 +7,7 @@
     <name>UFT Developer JUnit Test</name>
     <description>UFT Developer JUnit Test</description>
 
-    <dependencies>
+<dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -17,25 +17,25 @@
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>sdk</artifactId>
-            <version>15.1.0</version>
+            <version>${leanft.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>report</artifactId>
-            <version>15.1.0</version>
+            <version>${leanft.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>unittesting</artifactId>
-            <version>15.1.0</version>
+            <version>${leanft.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>verifications</artifactId>
-            <version>15.1.0</version>
+            <version>${leanft.version}</version>
         </dependency>
     </dependencies>
 
@@ -49,6 +49,7 @@
 
     <properties>
         <test.src.dir>src/test/java</test.src.dir>
+        <leanft.version>RELEASE</leanft.version>
     </properties>
 
     <build>
@@ -60,7 +61,7 @@
             <!--<plugin>-->
                 <!--<groupId>com.hpe.lft</groupId>-->
                 <!--<artifactId>appmodel-generator-mojo</artifactId>-->
-                <!--<version>15.1.0</version>-->
+                <!--<version>${leanft.version}</version>-->
                 <!--<executions>-->
                     <!--<execution>-->
                         <!--<phase>validate</phase>-->

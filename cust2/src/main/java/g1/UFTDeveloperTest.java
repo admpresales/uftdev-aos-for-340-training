@@ -57,7 +57,9 @@ public class UFTDeveloperTest extends UnitTestClassBase {
                 .tagName("INPUT")
                 .type("text").build());
 
-        quantityEditField.setValue("2");
+        // replays without errors quantityEditField.setValue("2");
+        // replays with errors. This is how it is at the end of the video
+        quantityEditField.setValue("3");
 
         Button saveToCartButton = browser.describe(Button.class, new ButtonDescription.Builder()
                 .buttonType("submit")
@@ -66,17 +68,14 @@ public class UFTDeveloperTest extends UnitTestClassBase {
         saveToCartButton.click();
 
         Button checkOutBtnButton = browser.describe(Button.class, new ButtonDescription.Builder()
-                .accessibilityName("")
                 .buttonType("submit")
-                .index(0)
-                .name(new RegExpProperty("CHECKOUT  \\(\\$\\d.*"))
-                .role("button")
+                .name("CHECKOUT  ($2,558.00)")
                 .tagName("BUTTON").build());
         Verify.areEqual("CHECKOUT ($2,558.00)", checkOutBtnButton.getInnerText(), "Verification", "Verify property: innerText");
 
         Link shoppingCartLink = browser.describe(Link.class, new LinkDescription.Builder()
-                .accessibilityName("ShoppingCart")
-                .innerText(new RegExpProperty("\\d"))
+                 .accessibilityName("ShoppingCart")
+                .innerText("2 ")
                 .role("link")
                 .tagName("A").build());
         shoppingCartLink.click();
@@ -91,8 +90,10 @@ public class UFTDeveloperTest extends UnitTestClassBase {
 
         Link hOMELink = browser.describe(Link.class, new LinkDescription.Builder()
                 .innerText("HOME")
-                .tagName("A").build());hOMELink.click();
+                .tagName("A").build());
+        hOMELink.click();
 
+// optional        browser.close();
     }
 
 }
