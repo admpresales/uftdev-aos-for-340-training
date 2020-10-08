@@ -1,5 +1,6 @@
 package g1;
 
+import com.hp.lft.sdk.internal.web.WebButton;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -67,36 +68,13 @@ public class UFTDeveloperTest extends UnitTestClassBase {
                 .tagName("BUTTON").build());
         saveToCartButton.click();
 
-       /*
-        Button checkOutBtnButton = browser.describe(Button.class, new ButtonDescription.Builder()
-                .buttonType("submit")
-                .name("CHECKOUT  ($2,558.00)")
-                .tagName("BUTTON").build());
-        Verify.areEqual("CHECKOUT ($2,558.00)", checkOutBtnButton.getInnerText(), "Verification", "Verify property: innerText");
-*/
+        myAM appModel = new myAM(browser);
 
-        Button checkOutBtnButton = browser.describe(Button.class, new ButtonDescription.Builder()
-                .accessibilityName("")
-                .buttonType("submit")
-                .index(0)
-                .name(new RegExpProperty("CHECKOUT  \\(\\$\\d.*"))
-                .role("button")
-                .tagName("BUTTON").build());
+        Button checkOutBtnButton = appModel.CheckOutBtnButton();
+        // note - you might have to add the index property to make the identification uniuqe
         Verify.areEqual("CHECKOUT ($2,558.00)", checkOutBtnButton.getInnerText(), "Verification", "Verify property: innerText");
 
-        /*
-        Link shoppingCartLink = browser.describe(Link.class, new LinkDescription.Builder()
-                 .accessibilityName("ShoppingCart")
-                .innerText("2 ")
-                .role("link")
-                .tagName("A").build());
-*/
-        Link shoppingCartLink = browser.describe(Link.class, new LinkDescription.Builder()
-                .accessibilityName("ShoppingCart")
-                .innerText(new RegExpProperty("\\d"))
-                .role("link")
-                .tagName("A").build());
-        shoppingCartLink.click();
+        appModel.ShoppingCartLinkRon().click();
 
         WebElement webElement = browser.describe(WebElement.class, new WebElementDescription.Builder()
                 .accessibilityName("")
